@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>সাংস্কৃতিক অনুষ্ঠান</title>
+<title>Frame</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
 <style>
 body{margin:0;padding:8px;background:#e8f5e9;display:flex;justify-content:center;font-family:'Hind Siliguri'}
-.box{width:100%;max-width:520px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.box{width:100%;max-width:520px;background:#fff;border-radius:16px;padding:10px}
 .row{display:flex;gap:6px;margin-bottom:8px}.row input{flex:1;padding:12px;border:1px solid #ccc;border-radius:10px;font-family:'Hind Siliguri'}
 #main{position:relative;width:100%;aspect-ratio:1;background:#fff;overflow:hidden}
-#photo{position:absolute;left:32.4%;top:42.4%;width:38.5%;height:38.5%;object-fit:cover;border-radius:50%;transform:translate(-50%,-50%);z-index:1;border:2px solid #FFD700}
+#photo{position:absolute;left:32.4%;top:42.4%;width:38.5%;height:38.5%;object-fit:cover;border-radius:50%;transform:translate(-50%,-50%);z-index:1}
 #frame{position:absolute;left:0;top:0;width:100%;height:100%;z-index:5;pointer-events:none}
 #txt{position:absolute;left:21%;top:75%;width:59%;height:13%;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 #txt .a{font-size:15px;font-weight:800;color:#082b1f;line-height:1.1}
@@ -23,15 +23,7 @@ body{margin:0;padding:8px;background:#e8f5e9;display:flex;justify-content:center
 <div class="row"><input id="nIn" placeholder="নাম লিখুন,,,,,"><input id="pIn" placeholder="পদবী লিখুন,,,"></div>
 <input type="file" id="f" accept="image/*" style="width:100%;padding:10px;border:1px solid #a5d6a7;border-radius:10px;margin-bottom:8px">
 <div style="display:flex;gap:8px;align-items:center;background:#e8f5e9;padding:6px 12px;border-radius:10px;margin-bottom:8px"><span>🔍</span><input type="range" id="z" min="70" max="300" value="100" style="flex:1"><span id="zl">100%</span></div>
-
-<div id="cap">
-<div id="main">
-<img id="photo" style="display:none">
-<img id="frame" src="https://i.ibb.co/YTjQ6KfJ/fixed-frame.png">
-<div id="txt"><div class="a" id="ta"></div><div class="b" id="tb"></div></div>
-</div>
-</div>
-
+<div id="cap"><div id="main"><img id="photo" style="display:none"><img id="frame" src="frame.png"><div id="txt"><div class="a" id="ta"></div><div class="b" id="tb"></div></div></div></div>
 <button id="btn">⬇️ HD ডাউনলোড</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -46,7 +38,7 @@ window.addEventListener('pointermove',e=>{if(!drag)return;px=e.clientX-sx;py=e.c
 window.addEventListener('pointerup',()=>drag=false);
 nIn.addEventListener('input',e=>ta.textContent=e.target.value);
 pIn.addEventListener('input',e=>tb.textContent=e.target.value);
-btn.addEventListener('click',()=>{if(!ok){alert('আগে ছবি দিন');return;}html2canvas(document.getElementById('main'),{scale:3,useCORS:true,backgroundColor:'#ffffff'}).then(c=>{const a=document.createElement('a');a.download='sanskritik.png';a.href=c.toDataURL('image/png');a.click();});});
+btn.addEventListener('click',()=>{if(!ok){alert('ছবি দিন');return;}html2canvas(document.getElementById('main'),{scale:3,useCORS:true,backgroundColor:'#ffffff'}).then(c=>{const a=document.createElement('a');a.download='frame.png';a.href=c.toDataURL('image/png');a.click();});});
 </script>
 </body>
 </html>
