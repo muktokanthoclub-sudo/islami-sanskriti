@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Frame</title>
+<title>সাংস্কৃতিক অনুষ্ঠান</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:10px;background:#e8f5e9;display:flex;justify-content:center;font-family:'Hind Siliguri'}
-.box{width:100%;max-width:500px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.row{display:flex;gap:6px;margin-bottom:8px}.row input{flex:1;padding:10px;border:1px solid #ccc;border-radius:10px;font-family:'Hind Siliguri'}
-#main{position:relative;width:100%;aspect-ratio:1}
-#photo{position:absolute;left:32.4%;top:42.4%;width:38.5%;height:38.5%;object-fit:cover;border-radius:50%;transform:translate(-50%,-50%);z-index:1}
-#frame{position:absolute;left:0;top:0;width:100%;height:100%;z-index:2;pointer-events:none}
-#txt{position:absolute;left:21%;top:75%;width:59%;height:13%;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-#txt .a{font-size:14px;font-weight:800;color:#082b1f;line-height:1.2}
-#txt .b{font-size:12px;font-weight:700;color:#082b1f}
+body{margin:0;padding:8px;background:#e8f5e9;display:flex;justify-content:center;font-family:'Hind Siliguri'}
+.box{width:100%;max-width:520px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.row{display:flex;gap:6px;margin-bottom:8px}.row input{flex:1;padding:12px;border:1px solid #ccc;border-radius:10px;font-family:'Hind Siliguri'}
+#main{position:relative;width:100%;aspect-ratio:1;background:#fff;overflow:hidden}
+#photo{position:absolute;left:32.4%;top:42.4%;width:38.5%;height:38.5%;object-fit:cover;border-radius:50%;transform:translate(-50%,-50%);z-index:1;border:2px solid #FFD700}
+#frame{position:absolute;left:0;top:0;width:100%;height:100%;z-index:5;pointer-events:none}
+#txt{position:absolute;left:21%;top:75%;width:59%;height:13%;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#txt .a{font-size:15px;font-weight:800;color:#082b1f;line-height:1.1}
+#txt .b{font-size:13px;font-weight:700;color:#082b1f}
 #btn{width:100%;background:#0b6e4f;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:700;font-size:18px;margin-top:10px}
 </style>
 </head>
@@ -22,13 +22,17 @@ body{margin:0;padding:10px;background:#e8f5e9;display:flex;justify-content:cente
 <div class="box">
 <div class="row"><input id="nIn" placeholder="নাম লিখুন,,,,,"><input id="pIn" placeholder="পদবী লিখুন,,,"></div>
 <input type="file" id="f" accept="image/*" style="width:100%;padding:10px;border:1px solid #a5d6a7;border-radius:10px;margin-bottom:8px">
-<div style="display:flex;gap:8px;align-items:center;background:#e8f5e9;padding:6px 12px;border-radius:10px;margin-bottom:8px"><span>🔍</span><input type="range" id="z" min="80" max="300" value="100" style="flex:1"><span id="zl">100%</span></div>
-<div id="cap"><div id="main">
+<div style="display:flex;gap:8px;align-items:center;background:#e8f5e9;padding:6px 12px;border-radius:10px;margin-bottom:8px"><span>🔍</span><input type="range" id="z" min="70" max="300" value="100" style="flex:1"><span id="zl">100%</span></div>
+
+<div id="cap">
+<div id="main">
 <img id="photo" style="display:none">
-<img id="frame" src="frame.png">
+<img id="frame" src="https://i.ibb.co/YTjQ6KfJ/fixed-frame.png">
 <div id="txt"><div class="a" id="ta"></div><div class="b" id="tb"></div></div>
-</div></div>
-<button id="btn">⬇️ ডাউনলোড</button>
+</div>
+</div>
+
+<button id="btn">⬇️ HD ডাউনলোড</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -40,9 +44,9 @@ z.addEventListener('input',()=>{sc=z.value/100;upd();});
 ph.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX-px;sy=e.clientY-py;ph.setPointerCapture(e.pointerId);});
 window.addEventListener('pointermove',e=>{if(!drag)return;px=e.clientX-sx;py=e.clientY-sy;upd();});
 window.addEventListener('pointerup',()=>drag=false);
-document.getElementById('nIn').addEventListener('input',e=>ta.textContent=e.target.value);
-document.getElementById('pIn').addEventListener('input',e=>tb.textContent=e.target.value);
-btn.addEventListener('click',()=>{if(!ok){alert('ছবি দিন');return;}html2canvas(document.getElementById('main'),{scale:3,useCORS:true,backgroundColor:'#ffffff'}).then(c=>{const a=document.createElement('a');a.download='frame.png';a.href=c.toDataURL('image/png');a.click();});});
+nIn.addEventListener('input',e=>ta.textContent=e.target.value);
+pIn.addEventListener('input',e=>tb.textContent=e.target.value);
+btn.addEventListener('click',()=>{if(!ok){alert('আগে ছবি দিন');return;}html2canvas(document.getElementById('main'),{scale:3,useCORS:true,backgroundColor:'#ffffff'}).then(c=>{const a=document.createElement('a');a.download='sanskritik.png';a.href=c.toDataURL('image/png');a.click();});});
 </script>
 </body>
 </html>
